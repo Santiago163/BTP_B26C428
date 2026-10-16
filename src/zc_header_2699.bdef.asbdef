@@ -1,0 +1,30 @@
+projection;
+strict ( 2 );
+use draft;
+use side effects;
+define behavior for ZC_HEADER_2699 alias soheader
+{
+  use create;
+  use update;
+  use delete;
+
+
+
+  use action Resume;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+
+  use association _Items { create; with draft; }
+}
+
+define behavior for ZC_ITEMS_2699 alias soitems
+{
+  use update;
+  use delete;
+
+
+
+  use association _Header { with draft; }
+}

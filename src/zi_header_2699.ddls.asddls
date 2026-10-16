@@ -2,9 +2,9 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Header Data Definition'
 @Metadata.ignorePropagatedAnnotations: true
-define root view entity ZI_HEADER_2699 
- as select from zsoheader_2699
-  composition [0..*] of ZI_ITEMS_2699        as _Items
+define root view entity ZI_HEADER_2699
+  as select from zsoheader_2699
+  composition [0..*] of ZI_ITEMS_2699  as _Items
   association [0..1] to ZI_STATUS_2699 as _OrderStatus on $projection.Orderstatus = _OrderStatus.Status
 {
   key id                                         as Id,
@@ -17,9 +17,9 @@ define root view entity ZI_HEADER_2699
       deliverydate                               as Deliverydate,
       orderstatus                                as Orderstatus,
       imageurl                                   as Imageurl,
-      created_by                           as LocalCreatedBy,
-      created_at                           as LocalCreatedAt,
-      last_changed_by                      as LocalLastChangedBy,
+      created_by                                 as LocalCreatedBy,
+      created_at                                 as LocalCreatedAt,
+      last_changed_by                            as LocalLastChangedBy,
       local_last_changed_at                      as LocalLastChangeAt,
       last_changed_at                            as LastChangeAt,
       _Items,

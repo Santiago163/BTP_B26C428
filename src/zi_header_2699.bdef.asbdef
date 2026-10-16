@@ -1,0 +1,119 @@
+managed;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_HEADER_2699 alias soheader
+implementation in class zbp_i_header_2699 unique
+persistent table zsoheader_2699
+draft table zsoheader_2699_d
+lock master total etag LastChangeAt
+authorization master ( instance )
+etag master LocalLastChangeAt
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  field ( mandatory ) id, Email;
+  field ( features : instance ) Createon,
+  Imageurl,
+  LastChangeAt,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangeAt;
+
+
+  association _Items { create; with draft; }
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare;
+
+    determination setLastChange on save  { create; update; }
+  validation validateOrderEmail on save { create; field Email; }
+  determine action validateOrderEmailValue  { validation validateOrderEmail; }
+  validation validateOrderStatus on save { create; field Orderstatus; }
+  determine action validateOrderStatusID  { validation validateOrderStatus; }
+
+    side effects {
+    determine action validateOrderStatusID executed on field Orderstatus affects messages;
+    determine action validateOrderEmailValue executed on field Email affects messages;
+  }
+
+  mapping for zsoheader_2699
+    {
+      id                 = id;
+      email              = email;
+      firstname          = firstname;
+      lastname           = lastname;
+      Country            = country;
+      Createon           = createon;
+      Deliverydate       = deliverydate;
+      Orderstatus        = orderstatus;
+      Imageurl           = imageurl;
+      LocalCreatedBy     = created_by;
+      LocalCreatedAt     = created_at;
+      LocalLastChangedBy = last_changed_by;
+      LocalLastChangeAt  = local_last_changed_at;
+      LastChangeAt       = last_changed_at;
+    }
+}
+
+define behavior for ZI_ITEMS_2699 alias soitems
+implementation in class zbp_i_items_2699 unique
+persistent table zsoitems_2699
+draft table zsoitems_2699_d
+lock dependent by _Header
+authorization dependent by _Header
+etag master LocalLastChangeAt
+{
+  update;
+  delete;
+
+  field ( readonly ) Id, LastChangeAt, LocalLastChangeAt, LocalCreatedBy, LocalCreatedAt, LocalLastChangedBy;
+  field ( mandatory ) uuid, Name, Description;
+  association _Header { with draft; }
+
+  validation validateName on save { create; field Name; }
+  determine action validateNameValue  { validation validateName; }
+
+  validation validateDescription on save { create; field Description; }
+  determine action validateDescriptionValue  { validation validateDescription; }
+
+  side effects {
+    determine action validateNameValue executed on field Name affects messages;
+    determine action validateDescriptionValue executed on field Description affects messages;
+  }
+
+
+
+  mapping for zsoitems_2699
+    {
+      Id                 = id;
+      uuid               = item_uuid;
+      name               = name;
+      Description        = description;
+      Releasedate        = releasedate;
+      Discontinueddate   = discontinueddate;
+      Price              = price;
+      Waers              = waers;
+      Height             = height;
+      Width              = width;
+      Depth              = depth;
+      DimensionsUom      = dimensions_uom;
+      Quantity           = quantity;
+      Unitofmeasure      = unitofmeasure;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangeAt  = local_last_changed_at;
+      LastChangeAt       = last_changed_at;
+    }
+
+
+
+
+}
