@@ -1,0 +1,7 @@
+@EndUserText.label: 'Orders Business Definition'
+define service ZSB_ORDERS_2699 {
+  expose ZC_HEADER_2699;
+  expose ZC_ITEMS_2699;
+  expose ZC_STATUS_2699;
+  expose I_Currency;
+}

@@ -1,0 +1,97 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Sales order',
+    typeNamePlural: 'Sales orders',
+    title: {
+        type: #STANDARD,
+        value: 'Id'
+    }
+}
+annotate entity ZC_HEADER_2699 with
+{
+  @EndUserText.label: 'Sales orders'
+  @UI.facet: [ {
+    label: 'Order header',
+    id: 'GeneralInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  },
+  {  id: 'Items',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Items',
+      position: 20,
+      targetElement: '_Items' }
+
+  ]
+  @UI.identification: [ {
+    position: 10
+  } ]
+
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+  @UI.lineItem: [ {
+    position: 10
+  } ]
+  Id;
+  @UI.identification: [ {
+  position: 20
+  } ]
+  @UI.lineItem: [ {
+    position: 20
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  Email;
+  @UI.lineItem: [ {
+    position: 30 , label: 'Customer'
+  } ]
+  CustomerFullName;
+
+  @UI.identification: [ {
+  position: 30
+  } ]
+  Firstname;
+  @UI.identification: [ {
+  position: 40
+  } ]
+  Lastname;
+
+  @UI.identification: [ {
+  position: 50
+  } ]
+  @UI.lineItem: [ {
+    position: 40
+  } ]
+  Country;
+  @UI.identification: [ {
+  position: 60
+  } ]
+  @UI.lineItem: [ {
+    position: 50
+  } ]
+  Createon;
+  @UI.identification: [ {
+  position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 60
+  } ]
+  Deliverydate;
+  @UI.identification: [ {
+  position: 80
+  } ]
+  @UI.lineItem: [ {
+    position: 70
+  } ]
+  Orderstatus;
+  @UI.identification: [ {
+  position: 90
+  } ]
+  
+  Imageurl;
+
+}

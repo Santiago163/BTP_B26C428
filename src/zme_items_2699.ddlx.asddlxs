@@ -1,0 +1,120 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Sales item',
+    typeNamePlural: 'Sales items',
+    title: {
+        type: #STANDARD,
+        value: 'UUID'
+    },
+    description:{ 
+        type: #STANDARD,
+        value: 'Name'
+    }
+    
+}
+annotate entity ZC_ITEMS_2699
+    with 
+{
+    @EndUserText.label: 'Item'
+  @UI.facet: [ {
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    label: 'General information',
+    type: #COLLECTION
+  },{
+    label: 'Detail', 
+    id: 'Detail', 
+    purpose: #STANDARD, 
+    position: 10 ,
+    targetQualifier: 'Detail',
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'GeneralInfo'
+    
+  },{
+    label: 'Dimensions', 
+    id: 'Dimensions', 
+    purpose: #STANDARD, 
+    position: 20 , 
+    targetQualifier: 'Dimensions',
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'GeneralInfo'
+    
+  }]
+
+  @UI: {
+    identification: [ { position: 10 } ],
+    lineItem: [ { position: 10 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 10 }]
+   }
+    Name;
+    @UI: {
+    identification: [ { position: 20 } ],
+    lineItem: [ { position: 20 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 20 }]
+   }
+    Description;
+    @UI: {
+    identification: [ { position: 30 } ],
+    lineItem: [ { position: 30 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 30 }]
+   }
+    Releasedate;
+    @UI: {
+    identification: [ { position: 40 } ],
+    lineItem: [ { position: 40 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 40 }]
+   }
+    Discontinueddate;
+    @UI: {
+    identification: [ { position: 50 } ],
+    lineItem: [ { position: 50 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 50 }]
+   }
+    Price;
+    @UI: {
+    identification: [ { position: 60 } ],
+    lineItem: [ { position: 60 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 60 }]
+   }
+    Waers;
+   @UI: {
+    identification: [ { position: 80 } ],
+    lineItem: [ { position: 80 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 70 }]
+   }
+    Quantity;
+    @UI: {
+    identification: [ { position: 90 } ],
+    lineItem: [ { position: 90 } ],
+    fieldGroup: [{ qualifier: 'Detail', position: 80 }]
+   }
+    UnitOfMeasure;
+    
+   
+   @UI: {
+    identification: [ { position: 100 } ],
+    lineItem: [ { position: 100 } ],
+    fieldGroup: [{ qualifier: 'Dimensions', position: 10 }]
+   }
+    Height;
+    @UI: {
+    identification: [ { position: 110 } ],
+    lineItem: [ { position: 110 } ],
+    fieldGroup: [{ qualifier: 'Dimensions', position: 20
+     }]
+   }
+    Width;
+    @UI: {
+    identification: [ { position: 120 } ],
+    lineItem: [ { position: 120 } ],
+    fieldGroup: [{ qualifier: 'Dimensions', position: 30 }]
+   }
+   Depth;
+   @UI: {
+    identification: [ { position: 130 } ],
+    lineItem: [ { position: 130 } ],
+    fieldGroup: [{ qualifier: 'Dimensions', position: 40 }]
+   }
+    DimensionsUom;
+}
